@@ -49,7 +49,7 @@ class NumberWrapper(Term):
 
     def is_null(self):
         return self.number == 0
-    
+
     def __eq__(self, other):
         if self.number == other:
             return True
@@ -98,7 +98,9 @@ class Mul(Term):
     def simplify(self):
         l_simp = self.term_left.simplify()
         r_simp = self.term_right.simplify()
-        if isinstance(l_simp, NumberWrapper) and isinstance(r_simp, NumberWrapper):
+        if isinstance(l_simp, NumberWrapper) and isinstance(
+            r_simp, NumberWrapper
+        ):
             return NumberWrapper(l_simp.number * r_simp.number)
         if l_simp == 1:
             return r_simp
